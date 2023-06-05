@@ -6,9 +6,11 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
+// @ts-ignore
 import {CookieService} from 'ngx-cookie';
 import {AuthService} from "../auth/auth.service";
 import {CommonService} from "../service/common.service";
+// @ts-ignore
 import {TranslateService} from '@ngx-translate/core';
 @Injectable()
 export class HttpConfigInterceptorInterceptor implements HttpInterceptor {
