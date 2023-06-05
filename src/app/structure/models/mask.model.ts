@@ -12,7 +12,7 @@ export class MaskModel {
 
   constructor() {
     this._read = false;
-    this.edit = false;
+    this._edit = false;
     this._create = false;
     this._delete = false;
     this._print = false;

@@ -7,6 +7,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {ToastrModule} from "ngx-toastr";
+import {AuthGuard} from "../../structure/auth-guard.service";
+import {RouterModule} from "@angular/router";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -15,6 +17,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [],
   imports: [
+    RouterModule,
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
@@ -30,7 +33,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     ToastrModule.forRoot(),
   ],
-  exports: [CommonModule,
+  exports: [
+    RouterModule,
+    CommonModule,
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -39,7 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule,
     ToastrModule
   ],
-  providers: []
+  providers: [AuthGuard]
 })
 export class SharedModule {
 

@@ -4,6 +4,14 @@
 @import './../node_modules/bootstrap/dist/css/bootstrap.min';
 @import './../node_modules/material-design-icons/iconfont/material-icons';
 @import 'ngx-toastr/toastr';
-html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
