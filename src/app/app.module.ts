@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ContactComponent } from './application/contact/contact.component';
-import { HeaderComponent } from './structure/components/header/header.component';
-import { FooterComponent } from './structure/components/footer/footer.component';
-import { NotFoundComponent } from './structure/components/not-found/not-found.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgModule, ErrorHandler} from "@angular/core";
+import {BrowserModule} from '@angular/platform-browser';
+import * as Sentry from "@sentry/angular-ivy";
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {ContactComponent} from './application/contact/contact.component';
+import {HeaderComponent} from './structure/components/header/header.component';
+import {FooterComponent} from './structure/components/footer/footer.component';
+import {NotFoundComponent} from './structure/components/not-found/not-found.component';
+import {Router} from "@angular/router";
+import {SharedModule} from "./shared/shared/shared.module";
 
 
 @NgModule({
@@ -19,11 +20,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotFoundComponent
   ],
   imports: [
-    BrowserModule,
+    SharedModule,
     AppRoutingModule,
-    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: true,
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(trace: Sentry.TraceService) {
+  }
+}
