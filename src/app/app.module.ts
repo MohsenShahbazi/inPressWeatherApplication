@@ -7,7 +7,7 @@ import { ContactComponent } from './application/contact/contact.component';
 import { HeaderComponent } from './structure/components/header/header.component';
 import { FooterComponent } from './structure/components/footer/footer.component';
 import { NotFoundComponent } from './structure/components/not-found/not-found.component';
-import {CookieService} from "ngx-cookie-service";
+
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import {CookieService} from "ngx-cookie-service";
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
