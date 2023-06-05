@@ -1,0 +1,11 @@
+{
+  "clientId": "",
+  "clientScope": "",
+  "clientSecret": "",
+  "authenticationServerUrl": "",
+  "oAuthLogoutUrl": "",
+  "authorizeUrl": "",
+  "authorizationUrl":"",
+  "resourceUrl": "https://saba.esata.ir:7091/tripResource/",
+  "oAuthCallbackUrl": "http://localhost:4200"
+}
