@@ -1,0 +1,14 @@
+export let PERSIAN_CHAR = /[^0-9آ-ی]+$/g;
+//export let persian= /[^0-9آ-ی]+$/g;
+//export let number= /[^0-9]+$/g;
+export let number= '^[0-9]';
+//export let english= /[^0-9a-zA-Z]+$/g;
+export let english= '^[a-zA-Z-0-9 ]*$';
+export let justPersian= /[^آ-ی]+$/g;
+export let percentage= /[0-9]*\.?[0-9]+%/;
+export let justNumber= /[^0-9]+$/g;
+export let phoneNumber=/^[0][9][0-9][0-9]{8,8}$/;
+export let persian= '^[ آ-ی]*$';
+export let password = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{8,64}$';
+export let mobile = '^[0][9][0-9][0-9]*';
+export let username = '^[a-zA-Z0-9_]{5,}[a-zA-z]+[0-9]*$';
