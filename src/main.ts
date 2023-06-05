@@ -36,5 +36,7 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0,
 });
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .then(success => console.log(`Bootstrap success`))
   .catch(err => console.error(err));
