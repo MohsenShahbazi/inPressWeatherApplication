@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from "../../../services/weather.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-weather',
@@ -9,16 +9,23 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class WeatherComponent implements OnInit {
   weatherForm!: FormGroup;
-  cityList: any[] = [];
+  cityList!: any;
+  name: any;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(
+    private weatherService: WeatherService,
+    private fb: FormBuilder
+  ) {
   }
 
   createWeatherForm(item?: any) {
     item = item || {};
+    /*this.weatherForm = this.fb.group({
+      cities: new FormControl(""),
+    });*/
+
     this.weatherForm = new FormGroup({
-      cities: new FormControl(
-        {value: item.cities ? item.cities : ''}, {validators: [Validators.required]})
+      cities: new FormControl()
     });
 
 

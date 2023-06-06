@@ -2,7 +2,9 @@
   <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
     <label>Choose Your City:</label>
     <mat-select class="form-control" formControlName="cities">
-      <mat-option *ngFor="let city of  cityList" [value]="id">{{name}} </mat-option>
+      <mat-option *ngFor="let item of cityList" [value]="item.id">
+        {{item?.name}}
+      </mat-option>
     </mat-select>
 
   </form>
