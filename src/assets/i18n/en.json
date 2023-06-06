@@ -4,5 +4,6 @@
   "contact": "Contact Us",
   "weather": "Weather",
   "network-connection-error": "Your network connection has a problem. Please, make sure it is stable before trying again",
-  "unspecified-error": "Sorry, there is an unspecified error"
+  "unspecified-error": "Sorry, there is an unspecified error",
+  "chooseCity": "Choose City"
 }

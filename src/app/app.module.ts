@@ -20,6 +20,7 @@ import {CookieService} from "ngx-cookie-service";
   imports: [
     SharedModule,
     AppRoutingModule,
+    //StoreModule.forRoot({})
   ],
   providers: [
     {

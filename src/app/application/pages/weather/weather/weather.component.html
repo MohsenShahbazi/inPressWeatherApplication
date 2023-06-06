@@ -1,11 +1,14 @@
 <div class="container">
   <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
     <label>Choose Your City:</label>
-    <mat-select class="form-control" formControlName="cities">
-      <mat-option *ngFor="let item of cityList" [value]="item.id">
+    <mat-select class="form-control" formControlName="cities" required>
+      <mat-option *ngFor="let item of cityList" [value]="item">
         {{item?.name}}
       </mat-option>
     </mat-select>
 
+    <button mat-raised-button class="btn btn-primary" type="submit" cdkFocusInitial [disabled]="!weatherForm.valid">
+      {{'chooseCity' | translate}}
+    </button>
   </form>
 </div>

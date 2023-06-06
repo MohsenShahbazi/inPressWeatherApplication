@@ -4,5 +4,6 @@
   "contact": "تماس با ما",
   "weather": "آب و هوا",
   "network-connection-error": "خطای شبکه",
-  "unspecified-error": "با عرض معذرت خطای پیش بینی نشده ای رخ داده است"
+  "unspecified-error": "با عرض معذرت خطای پیش بینی نشده ای رخ داده است",
+  "chooseCity": "انتخاب شهر"
 }

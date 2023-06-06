@@ -6,6 +6,6 @@
   "oAuthLogoutUrl": "",
   "authorizeUrl": "",
   "authorizationUrl":"",
-  "resourceUrl": "https://saba.esata.ir:7091/tripResource/",
+  "resourceUrl": "https://api.openweathermap.org/data/2.5/",
   "oAuthCallbackUrl": "http://localhost:4200"
 }

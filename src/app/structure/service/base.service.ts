@@ -11,34 +11,34 @@ export class BaseService {
   }
 
   rout: string = '';
-  addOnResourceUrl: string;
+  addOnResourceUrl: string = '';
   page: number = 1;
   limit: number = 50;
 
 
   add(model: any): any {
-    return this.http.post(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null))  + this.rout + 'add', model, {});
+    return this.http.post(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null)) + this.rout + 'add', model, {});
   }
 
   update(model: any) {
-    return this.http.post(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null))  + this.rout + 'update', model, {});
+    return this.http.post(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null)) + this.rout + 'update', model, {});
   }
 
   delete(id: number) {
     let params = new HttpParams();
     params = params.set('id', id);
-    return this.http.delete(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null))  + this.rout + 'delete', {params: params});
+    return this.http.delete(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null)) + this.rout + 'delete', {params: params});
   }
 
   get(id: number): any {
     let params = new HttpParams().set('id', id);
-    return this.http.get(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null))  + this.rout + 'get', {params: params});
+    return this.http.get(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null)) + this.rout + 'get', {params: params});
   }
 
 
-  //for internall pagination
+  //for internal pagination
   getAll() {
-    return this.http.get(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null))  + this.rout + 'list', {params: params});
+    return this.http.get(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null)) + this.rout + 'list');
   }
 
   //for external pagination
@@ -50,13 +50,8 @@ export class BaseService {
       params = params.set('sort', sortValue);
     }
     params = sortDir ? params.set('sort_dir', 'asc') : params.set('sort_dir', 'desc');
-    return this.http.get(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null))  + this.rout + `list`, {params: params});
+    return this.http.get(this.authService.getResourceUrl((this.addOnResourceUrl !== null ? this.addOnResourceUrl : null)) + this.rout + `list`, {params: params});
   }
-
-
-
-
-
 
 
 }

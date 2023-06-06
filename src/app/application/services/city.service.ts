@@ -6,10 +6,14 @@ import {BaseService} from "../../structure/service/base.service";
 @Injectable({
   providedIn: 'root'
 })
-export class CityService extends BaseService {
+export class CityService {
+  rout: string = 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities/';
 
-  constructor(http: HttpClient, authService: AuthService) {
-    super(http, authService);
-    this.rout = 'city/';
+  constructor(public http: HttpClient, public authService: AuthService) {
+  }
+
+
+  getAll(): any {
+    return this.http.get(this.rout);
   }
 }

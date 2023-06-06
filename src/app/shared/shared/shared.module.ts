@@ -21,10 +21,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     CommonModule,
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -38,10 +38,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     CommonModule,
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
     TranslateModule,
     ToastrModule
   ],

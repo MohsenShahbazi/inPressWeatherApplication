@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from "../../../services/weather.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {CityService} from "../../../services/city.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-weather',
@@ -13,32 +15,29 @@ export class WeatherComponent implements OnInit {
   name: any;
 
   constructor(
+    private cityService: CityService,
     private weatherService: WeatherService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
   ) {
   }
 
-  createWeatherForm(item?: any) {
-    item = item || {};
-    /*this.weatherForm = this.fb.group({
-      cities: new FormControl(""),
-    });*/
-
-    this.weatherForm = new FormGroup({
-      cities: new FormControl()
-    });
-
-
-  }
 
   ngOnInit() {
-    this.weatherService.getAll().subscribe((weather: any): any => {
-      console.log(weather['data']);
-      this.cityList = weather['data'];
+    this.createWeatherForm();
+    this.cityService.getAll().subscribe((info: any): any => {
+      this.cityList = info['data'];
     })
   };
 
   onSubmit() {
-    console.log(this.weatherForm);
+    this.weatherService.weatherData$.next(this.weatherForm.controls['cities'].value);
+    this.router.navigate(['weather/showWeather']);
+  }
+
+  createWeatherForm() {
+    this.weatherForm = this.fb.group({
+      cities: ['', Validators.required]
+    });
   }
 }
