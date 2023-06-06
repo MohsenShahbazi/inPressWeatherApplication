@@ -49,7 +49,53 @@ export class HttpConfigInterceptor implements HttpInterceptor {
       map((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
             if (event.status == 200) {
-              return event.body;
+              /* switch (event.body.Status) {
+                 case 0 : {
+                   if (event.body.message.total == undefined || event.body.message.total == -1) {
+                     event = event.clone({
+                       body: event.body.message.data
+                     });
+                   } else {
+                     event = event.clone({
+                       body: {listModel: event.body.message.data, total: event.body.message.total}
+                     });
+                   }
+                   return event;
+                   break;
+                 }
+                 case 1 : {
+                   _.forEach(event.body.message.invalids, (item) => {
+                     this.commonService.showErrorMessage(item.message, item['field'].toString());
+                   });
+                   let data: any = {
+                     error: event.body,
+                     headers: event.headers,
+                     status: event.body.message.code,
+                     statusText: event.body.message.desc,
+                     url: event.url
+                   };
+                   throw new HttpErrorResponse(data);
+                   break;
+                 }
+                 case 2 : {
+                   this.commonService.showErrorMessage(event.body.message.desc, event.body.message.code);
+                   let data: any = {
+                     error: event.body,
+                     headers: event.headers,
+                     status: event.body.message.code,
+                     statusText: event.body.message.desc,
+                     url: event.url
+                   };
+                   throw new HttpErrorResponse(data);
+                   break;
+                 }
+                 default : {
+                   return event;
+                   break;
+                 }
+               }*/
+
+              return event;
             }
 
           }
