@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {CommonModule, HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -9,6 +9,7 @@ import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate
 import {ToastrModule} from "ngx-toastr";
 import {AuthGuard} from "../../structure/auth-guard.service";
 import {RouterModule} from "@angular/router";
+import {HttpConfigInterceptor} from "../../structure/interceptor/httpconfig.interceptor";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -44,7 +45,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule,
     ToastrModule
   ],
-  providers: [AuthGuard]
+  providers: [
+    AuthGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ]
 })
 export class SharedModule {
 

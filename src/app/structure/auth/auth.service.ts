@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
 import {MaskModel} from '../models/mask.model';
 import {Router} from '@angular/router';
-import {Observable, of, Subject} from 'rxjs';
+import {finalize, Observable, of, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {CommonService} from '../service/common.service';
 import {CookieService} from "ngx-cookie-service";
@@ -36,7 +36,7 @@ export class AuthService {
   private authorizeUrl: string = '';
   private authorizationUrl: string = '';
   private configUrls: any;
-  private token: string | undefined;
+  private token: any;
   private href: string = '';
   private expires: any = 0;
   private maskModel: MaskModel = new MaskModel();
@@ -233,25 +233,26 @@ export class AuthService {
   }
 
   // last logout
-  /*logout() {
+  logout() {
     this.http.post(this.oAuthLogoutUrl, {}, {withCredentials: true}).pipe(finalize(() => {
       this.authenticated = false;
       this.token = null;
       this.expires = null;
-      this.cookieService.remove('access-token');
-      this.cookieService.remove('expires');
-      this.cookieService.remove('JSESSIONID');
-      if (!isDevMode()) {
-        this.http.post('logout', {},)
-          .subscribe(() => {
+      this.cookieService.delete('access-token');
+      this.cookieService.delete('expires');
+      this.cookieService.delete('JSESSIONID');
+
+      this.http.post('logout', {},)
+        .subscribe((info: any): any => ({
+          next: () => {
             window.location.reload();
-          }, err => {
+          },
+          error: (err: any) => {
             window.location.reload();
-          });
-      }
-      window.location.reload();
+          }
+        }))
     })).subscribe();
-  }*/
+  }
 
 
   parse(str: any) {

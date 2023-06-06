@@ -1,5 +1,8 @@
 {
   "test": "تست",
-  "about": "درباره ما"
-
+  "about": "درباره ما",
+  "contact": "تماس با ما",
+  "weather": "آب و هوا",
+  "network-connection-error": "خطای شبکه",
+  "unspecified-error": "با عرض معذرت خطای پیش بینی نشده ای رخ داده است"
 }
